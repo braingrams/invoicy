@@ -1,14 +1,21 @@
 import ExternalLink from '@/components/external-link';
 import PageLayout from '@/components/page-layout';
+import { Container } from '@/components/page-layout/container';
+import Actions from '@/components/utilities/actions';
+import HowToCard from '@/components/utilities/how-to';
+import ServiceCard from '@/components/utilities/service-card';
 import {
+  Box,
   Button,
   Center,
   Divider,
+  Grid,
   Heading,
   HStack,
   Image,
   Link,
   Skeleton,
+  Square,
   Stack,
   Text,
   VStack,
@@ -24,77 +31,179 @@ const IndexPage = () => {
   return (
     <PageLayout
       title='Home'
-      description='Discover a starter kit which includes Next.js, Chakra-UI, Framer-Motion in Typescript. You have few components, Internationalization, SEO and more in this template ! Enjoy coding.'
+      description='An online invoicing software for start up business. Create an invoice to get started.'
     >
-      <Stack
-        spacing={4}
-        py={12}
-        align='center'
-        h='100vh'
-        w='100%'
-        direction={{ base: 'column', md: 'row' }}
+      {/* hero */}
+      <Box
+        bgColor='brand.100'
+        w='full'
+        h='80vh'
+        clipPath='polygon(0 0, 100% 0, 100% 100%, 0 78%)'
+        pos='relative'
       >
-        <VStack
-          spacing={2}
-          align='start'
-          w={{ base: '100%', md: '50%' }}
-          py={{ base: 20, md: 0 }}
-        >
-          <Heading as='h1'>Alexandre GOSSARD</Heading>
-          <Divider />
-          <Text color='gray.500' align='justify'>
-            <Trans i18nKey='excerpt'>
-              <strong>Student</strong>
-              by day,
-              <strong>mad developer</strong>
-              by night. Passionate about computer science and
-              <strong>new technologies</strong>, currently
-              <ExternalLink href='https://nextjs.org/'>
-                Next.js
-              </ExternalLink>&{' '}
-              <ExternalLink href='https://chakra-ui.com/'>
-                Chakra UI
-              </ExternalLink>
-              , I develop in order to propose different{' '}
-              <strong>opensource</strong>
-              contents.
-            </Trans>
-          </Text>
-          <HStack
-            spacing={4}
-            w='full'
-            justify={{ base: 'center', md: 'flex-start' }}
+        <Image
+          src='/assets/images/particles.png'
+          alt='oarticles'
+          pos='absolute'
+        />
+        <Container>
+          <Stack w='75%' mx='auto' mt='7rem' gap='.5rem'>
+            <Heading
+              color='white'
+              fontFamily='Montserrat'
+              fontSize='48px'
+              fontWeight='800'
+              textAlign='center'
+            >
+              Create Professional Invoices for Your Business in Minutes For Free
+            </Heading>
+            <Text
+              color='white'
+              fontFamily='Montserrat'
+              fontSize='20px'
+              textAlign='center'
+              w='70%'
+              mx='auto !important'
+            >
+              Dynamically render professional invoices for your business at no
+              cost using our ready made templates in few minutes
+            </Text>
+            <Button
+              w='30%'
+              bgColor='brand.50'
+              color='white'
+              h='3.5rem'
+              fontWeight='bold'
+              fontFamily='Montserrat'
+              fontSize='1rem'
+              mx='auto !important'
+              _hover={{ color: 'black' }}
+            >
+              Create a new invoice
+            </Button>
+          </Stack>
+        </Container>
+      </Box>
+      {/* heroImage */}
+      <Box mt='-15rem' zIndex='7' w='full'>
+        <Container>
+          <Box
+            borderRadius='50px'
+            // bgColor='white'
+            width='90%'
+            m='3rem auto'
           >
-            <Link href={WEBSITE} isExternal>
-              <Button
-                colorScheme='brand'
-                variant='ghost'
-                rightIcon={<ImSphere />}
-              >
-                Website
-              </Button>
-            </Link>
-            <Link href={GITHUB_PROFILE} isExternal>
-              <Button
-                colorScheme='brand'
-                variant='ghost'
-                rightIcon={<FiExternalLink />}
-              >
-                Github
-              </Button>
-            </Link>
-          </HStack>
+            <Image
+              src='/assets/images/hero.png'
+              alt='hero'
+              w='full'
+              objectFit='cover'
+            />
+          </Box>
+        </Container>
+      </Box>
+      {/* service */}
+      <Box my='4rem'>
+        <VStack spacing='.3rem'>
+          <Text fontSize='.9rem' fontWeight='bold' color='brand.600'>
+            Services
+          </Text>
+          <Heading>Services That Grows Business Value</Heading>
+          <Text w='80%' mx='auto !important' textAlign='center'>
+            Globally actualize cost effective with resource maximizing
+            leadership skills. without writing code.
+          </Text>
         </VStack>
-        <Center w={{ base: '100%', md: '50%' }}>
-          <Image
-            src='/assets/images/home.jpg'
-            h={500}
-            fit='cover'
-            fallback={<Skeleton w={{ base: '100%', md: '50%' }} h={500} />}
-            alt=''
-          />
-        </Center>
-      </Stack>
+        <Container>
+          <Grid templateColumns='repeat(3,1fr)' gap='2rem' mt='5rem'>
+            <ServiceCard
+              color='brand.300'
+              icon='fa-shield-quartered'
+              title='Quality First'
+            />
+            <ServiceCard
+              color='brand.50'
+              icon='fa-face-smiling-hands'
+              title='User Friendly'
+            />
+            <ServiceCard
+              color='brand.800'
+              icon='fa-head-side-goggles'
+              title='Reliability'
+            />
+          </Grid>
+        </Container>
+      </Box>
+      {/* actions */}
+      <Box py='5rem' bgImg='/assets/images/dot.png' bgSize='contain'>
+        <Container>
+          <Grid templateColumns='repeat(2, 1fr)' gap='4rem'>
+            <Actions
+              title={'Utilize your client data'}
+              desc={
+                ' Progressively reinvent models and niche revolutionary benefits forS your business'
+              }
+              imgUrl={'assets/images/cta-img-1.png'}
+              color='brand.400'
+            />
+            <Actions
+              title={'Utilize your client data'}
+              desc={
+                ' Progressively reinvent models and niche revolutionary benefits forS your business'
+              }
+              imgUrl={'assets/images/cta-img-2.png'}
+              color='brand.500'
+            />
+          </Grid>
+        </Container>
+      </Box>
+      {/* setup */}
+      <Box my='4rem' w='full'>
+        <VStack spacing='.3rem'>
+          <Text fontSize='.9rem' fontWeight='bold' color='brand.600'>
+            Instant Setup
+          </Text>
+          <Heading>Simple and Effortless Process</Heading>
+          <Text w='80%' mx='auto !important' textAlign='center'>
+            Globally actualize cost effective with resource maximizing
+            leadership skills. without writing code.
+          </Text>
+        </VStack>
+        <Container>
+          <Grid templateColumns='repeat(5,1fr)' gap='2rem' mt='5rem'>
+            <HowToCard
+              color='brand.600'
+              icon='fa-brands fa-chrome'
+              title='Visit our website'
+              step='1'
+            />
+            <HowToCard
+              color='brand.300'
+              icon='fa-solid fa-ballot-check'
+              title='Select a template'
+              step='2'
+            />
+            <HowToCard
+              color='brand.50'
+              icon='fa-solid fa-grid-2-plus'
+              title='Add invoice details'
+              step='3'
+            />
+            <HowToCard
+              color='brand.800'
+              icon='fa-regular fa-receipt'
+              title='Preview invoice'
+              step='4'
+            />
+            <HowToCard
+              color='brand.100'
+              icon='fa-solid fa-download'
+              title='Download/Share'
+              step='5'
+            />
+          </Grid>
+        </Container>
+      </Box>
     </PageLayout>
   );
 };

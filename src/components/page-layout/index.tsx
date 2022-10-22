@@ -1,4 +1,4 @@
-import { Container, ContainerProps } from '@chakra-ui/react';
+import { Container as Wrapper, ContainerProps } from '@chakra-ui/react';
 import { motion, Variants } from 'framer-motion';
 import { NextSeo } from 'next-seo';
 import { ReactNode } from 'react';
@@ -30,29 +30,29 @@ type PageProps = {
   children: ReactNode;
 };
 
-const MotionContainer = motion<ContainerProps>(Container);
+const MotionContainer = motion<ContainerProps>(Wrapper);
 
 const PageLayout = ({ title, description, children }: PageProps) => {
   return (
     <>
       <NextSeo
-        title={title + ' | Starter Kit'}
+        title={title + ' | Smart Invoicing App'}
         description={description}
         twitter={{
           cardType: 'summary_large_image',
-          handle: '@hakkaofdev',
+          handle: '@brain_tweets',
         }}
         openGraph={{
-          url: 'https://www.hakkaofdev.fr',
-          title: title + ' | Starter Kit',
+          url: 'https://www.bamfolio.netlify.app',
+          title: title + ' | Smart Invoicing App',
           description: description,
           locale: 'en_US',
           images: [
             {
-              url: 'https://www.hakkaofdev.fr/assets/images/social.png',
+              url: '/assets/images/invoicy.png',
               width: 1200,
               height: 630,
-              alt: 'Alexandre Gossard',
+              alt: 'Invoicy',
               type: 'image/png',
             },
           ],
@@ -60,20 +60,20 @@ const PageLayout = ({ title, description, children }: PageProps) => {
         additionalLinkTags={[
           {
             rel: 'icon',
-            href: 'https://www.hakkaofdev.fr/favicon.ico',
+            href: '/assets/images/invoicyfav.png',
           },
         ]}
       />
       <MotionContainer
         display='flex'
-        maxW='container.lg'
+        maxW='100%'
         minH={{ base: 'auto', md: '100vh' }}
-        px={{ base: 4, lg: 8 }}
         initial='hidden'
         animate='enter'
         exit='exit'
         variants={variants}
         centerContent
+        px='0 !important'
       >
         {children}
       </MotionContainer>

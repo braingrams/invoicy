@@ -11,13 +11,13 @@ const styles = {
 
 const colors = {
   brand: {
-    50: '#f6e8ff',
-    100: '#e3bdff',
-    200: '#cd94ff',
-    300: '#b46ef7',
-    400: '#9a4ce7',
-    500: '#7e31ce',
-    600: '#641eab',
+    50: '#F25767',
+    100: '#052163',
+    200: '#333333',
+    300: '#0B163F',
+    400: '#F6D8DD',
+    500: '#CBD9FB',
+    600: '#175CFF',
     700: '#4b1483',
     800: '#341158',
     900: '#1e0d2d',
@@ -25,7 +25,8 @@ const colors = {
 };
 
 const fonts = {
-  heading: `Josefin Sans, ${base.fonts.heading}`,
+  heading: `'Montserrat', ${base.fonts.heading}`,
+  body: `'Montserrat', ${base.fonts.body}`,
 };
 
 const components = {

@@ -4,6 +4,7 @@ import theme from '@/theme';
 import { ChakraProvider } from '@chakra-ui/react';
 import '@fontsource/josefin-sans/700.css';
 import { AppProps } from 'next/app';
+import '../src/styles/global.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
