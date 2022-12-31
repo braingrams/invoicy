@@ -1,0 +1,56 @@
+[
+    {
+        "id": 0,
+        "user": "Akinyemi Bukunmi",
+        "role": "Tech Lead.",
+        "title": "It is undeniably good",
+        "word": "Rapidously moving waves like it should cause its taking things as beautiful as it should be",
+        "rate": 5,
+        "active": true
+    },
+    {
+        "id": 1,
+        "user": "Obi Jackson",
+        "role": "Tech Lead.",
+        "title": "It is undeniably good",
+        "word": "Rapidously moving waves like it should cause its taking things as beautiful as it should be",
+        "rate": 5,
+        "active": true
+    },
+    {
+        "id": 2,
+        "user": "Adeleke John",
+        "role": "MD/CEO.",
+        "title": "This is Great",
+        "word": "Amazing is an underestatement",
+        "rate": 4,
+        "active": false
+    },
+    {
+        "id": 3,
+        "user": "Tolu George",
+        "role": "Tech Lead.",
+        "title": "It is undeniably good",
+        "word": "Rapidously moving waves like it should cause its taking things as beautiful as it should be",
+        "rate": 3,
+        "active": false
+    },
+    {
+        "id": 4,
+        "user": "Bimbo Davis",
+        "role": "Tech Lead.",
+        "title": "It is undeniably good",
+        "word": "Rapidously moving waves like it should cause its taking things as beautiful as it should be",
+        "rate": 5,
+        "active": false
+    },
+    {
+        "id": 5,
+        "user": "Tope Aina",
+        "role": "Tech Lead.",
+        "title": "It is undeniably good",
+        "word": "Rapidously moving waves like it should cause its taking things as beautiful as it should be",
+        "rate": 4,
+        "active": false
+    }
+]

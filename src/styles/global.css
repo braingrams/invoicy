@@ -1,2 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
 @import url('https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css');
+
+
+.carouselItem:not(style) ~ *:not(style) {
+  margin-inline-start: 3rem;
+}
+.carouselItem {
+  margin: 0;
+}

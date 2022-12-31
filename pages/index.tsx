@@ -1,6 +1,7 @@
 import ExternalLink from '@/components/external-link';
 import PageLayout from '@/components/page-layout';
 import { Container } from '@/components/page-layout/container';
+import TestimonialCards from '@/components/utilities/TestimonialCards';
 import Actions from '@/components/utilities/actions';
 import HowToCard from '@/components/utilities/how-to';
 import ServiceCard from '@/components/utilities/service-card';
@@ -8,7 +9,9 @@ import {
   Box,
   Button,
   Center,
+  Circle,
   Divider,
+  Flex,
   Grid,
   Heading,
   HStack,
@@ -20,14 +23,10 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { Trans, useTranslation } from 'react-i18next';
-import { FiExternalLink } from 'react-icons/fi';
-import { ImSphere } from 'react-icons/im';
-import { GITHUB_PROFILE, WEBSITE } from 'src/constants';
+import testimonials from '../src/components/data/testimonials.json';
+import CarouselWrapper from '@/components/Carousel/CarouselWrapper';
 
 const IndexPage = () => {
-  const { t } = useTranslation();
-
   return (
     <PageLayout
       title='Home'
@@ -202,6 +201,28 @@ const IndexPage = () => {
               step='5'
             />
           </Grid>
+        </Container>
+      </Box>
+      {/* Testimonials  */}
+      <Box
+        bgColor='brand.100'
+        w='full'
+        py='5rem'
+        bgImg='/assets/images/dot.png'
+        bgSize='contain'
+      >
+        <VStack spacing='.3rem' mb='2rem'>
+          <Text fontSize='.9rem' fontWeight='bold' color='brand.600'>
+            Testimonials
+          </Text>
+          <Heading color='white'>What Users Say AUs</Heading>
+          <Text w='80%' mx='auto !important' textAlign='center' color='white'>
+            Globally actualize cost effective with resource maximizing
+            leadership skills. without writing code.
+          </Text>
+        </VStack>
+        <Container>
+          <CarouselWrapper slides={testimonials} width='47.5%' adjustment={9} />
         </Container>
       </Box>
     </PageLayout>
