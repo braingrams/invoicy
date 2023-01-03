@@ -48,9 +48,13 @@ import Wheels from './Wheels';
 import useComponentVisible from './useComponentVisible';
 import useClickOutside from './useClickOutside';
 import { CUR } from './Currency';
+import TemplateOne from './Templates/TemplateOne';
+import TemplateTwo from './Templates/TemplateTwo';
 
-function SingleTemplate() {
-  const [colorScheme, setColorScheme] = useState('brand.100');
+function SingleTemplate({ template }) {
+  const [colorScheme, setColorScheme] = useState(
+    template == 1 ? 'brand.100' : '#e5127a'
+  );
   const [textScheme, setTextScheme] = useState('white');
   const [showColorWheel, setShowColorWheel] = useState(false);
   const [showTextWheel, setShowTextWheel] = useState(false);
@@ -101,8 +105,6 @@ function SingleTemplate() {
   //   console.log({ companyLogo });
 
   const toast = useToast();
-
-  
 
   const submitItem = () => {
     if (items.desc == '' || items.price == '' || items.unit == '') {
@@ -184,15 +186,26 @@ function SingleTemplate() {
     };
   }, []);
 
+  //Template One
   const ref = useRef<any>(null);
   function downloadInvoice() {
     if (ref.current) {
       ref.current.save();
     }
   }
-  // const printRef = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => ref.current,
+  });
+
+  //Template two
+  const refB = useRef<any>(null);
+  function downloadInvoiceB() {
+    if (refB.current) {
+      refB.current.save();
+    }
+  }
+  const handlePrintB = useReactToPrint({
+    content: () => refB.current,
   });
 
   const widgetApi = useRef<any>();
@@ -545,373 +558,65 @@ function SingleTemplate() {
         </Box>
       </Box>
 
-      <Box
-        w={['90%', '49%']}
-        pos={['relative', 'absolute']}
-        ml={['auto', '51%']}
-        mr={['auto', '0']}
-        overflow='auto'
-        display={[showInvoice ? 'block' : 'none', 'block']}
-        h='full'
-        // px={['1rem']}
-        pr={['0', '1rem']}
-      >
-        <Box pos='absolute' left='-2000px'>
-          <PDFExport
-            ref={ref}
-            paperSize='A4'
-            scale={0.7}
-            margin={20}
-            fileName={`INVOICY - ${invoiceNo}.pdf`}
-            author='KendoReact Team'
-          >
-            <Box w='full' h='29.7cm' pos='relative'>
-              <Box h='2rem' bgColor={colorScheme} /> {/* Invoice Top  */}
-              <Flex p='2rem' justify='space-between' bgColor='gray.200'>
-                <Box>
-                  <Box h='4rem'>
-                    {companyLogo !== undefined ? (
-                      <Image src={companyLogo?.cdnUrl} h='full' w='auto' />
-                    ) : (
-                      <Heading mb='3rem' color={colorScheme} noOfLines={1}>
-                        {companyName || 'LOGO'}
-                      </Heading>
-                    )}
-                  </Box>
-                  <Box mt='1rem' px='0rem' w='full'>
-                    <Text
-                      fontWeight='600'
-                      w='100%'
-                      borderBottom='2px solid black'
-                    >
-                      Bill to:
-                    </Text>
-                    <Text>{customerName}</Text>
-                    <Text>{customerEmail}</Text>
-                    <Text>{customerAddress}</Text>
-                    <Text>{customerPhone}</Text>
-                  </Box>
-                  {/* <Box>
-              <Text>Company Name</Text>
-              <Text>Company Address</Text>
-              <Text>Company Email</Text>
-              <Text>Company Phone No.</Text>
-            </Box> */}
-                </Box>
-                <Box>
-                  <Heading mb='3rem'>Invoice</Heading>
-                  <Text>Date: {date}</Text>
-                  <Text textTransform='capitalize'>
-                    Invoice No: {invoiceNo}
-                  </Text>
-                </Box>
-              </Flex>
-              <TableContainer>
-                <Table variant='striped'>
-                  <Thead>
-                    <Tr bgColor={colorScheme}>
-                      <TH label='Description' first textScheme={textScheme} />
-                      <TH label='Qty' textScheme={textScheme} />
-                      <TH label='Unit Price' textScheme={textScheme} />
-                      <TH label='Total' textScheme={textScheme} />
-                    </Tr>
-                  </Thead>
-                  <Tbody borderX='1px solid' borderColor='gray.400'>
-                    {populatedItem?.map((x) => (
-                      <Tr>
-                        <TD label={x.desc} first />
-                        <TD label={x.unit} />
-                        <TD label={x.price} />
-                        <TD label={x.amount} />
-                      </Tr>
-                    ))}
-                  </Tbody>
-                </Table>
-              </TableContainer>
-              <Flex mt='1rem' justify='space-between' px='1rem'>
-                <Box w='40%'>
-                  <Text fontSize='.9rem' fontWeight='600'>
-                    Additional Information
-                  </Text>
-                  <Text fontSize='.8rem'>{additionalInfo}</Text>
-                </Box>
-                <Box>
-                  <VStack>
-                    <InvoiceTotal title='Subtotal' value={total || 0} />
-                    <InvoiceTotal
-                      title='Discount'
-                      value={`-${discount || 0} `}
-                    />
-                    <InvoiceTotal title='Tax' value={taxAmount || 0} />
-                  </VStack>
-                  <FinalTotal
-                    title='Total'
-                    value={finalTotal}
-                    colorScheme={colorScheme}
-                    textScheme={textScheme}
-                    currency={currency}
-                  />
-                </Box>
-              </Flex>
-              <Flex justify='flex-start' mt='3rem' pl='1rem'>
-                <Box w='30%'>
-                  <Box h='auto'>
-                    {/* <Image src='' h='full' w='auto' /> */}
-                    <Text
-                      fontFamily='"Parisienne", cursive;'
-                      mb='0'
-                      fontSize='1.5rem'
-                      textAlign='center'
-                      borderBottom='2px solid black'
-                    >
-                      {companySignature}
-                    </Text>
-                  </Box>
-                  <Text
-                    fontSize='.9rem'
-                    fontWeight='600'
-                    mx='auto'
-                    w='fit-content'
-                    mt='.5rem'
-                  >
-                    Signature
-                  </Text>
-                </Box>
-              </Flex>
-              <Box pos='absolute' bottom='0' w='full'>
-                <Text textAlign='center' m='4rem 0 1rem' fontSize='.8rem'>
-                  Thank You For Your Patronage
-                </Text>
-                <Flex justify='center' gap='2rem' mb='1rem' fontSize='.9rem'>
-                  {companyPhone && (
-                    <HStack>
-                      <Icon as={CgPhone} />
-                      <Text mb='0'>{companyPhone}</Text>
-                    </HStack>
-                  )}
-                  {companyWebsite && (
-                    <HStack>
-                      <Icon as={AiFillChrome} />
-                      <Text mb='0'>{companyWebsite}</Text>
-                    </HStack>
-                  )}
-                  {companyAddress && (
-                    <HStack>
-                      <Icon as={ImLocation2} />
-                      <Text mb='0'>{companyAddress}</Text>
-                    </HStack>
-                  )}
-                </Flex>
-                {watermark && (
-                  <Flex
-                    justify='center'
-                    color='gray.400'
-                    align='center'
-                    mb='1rem'
-                  >
-                    <Text mb='0'>Made with</Text>
-                    <Icon as={GiLoveMystery} mx='.5rem' />
-                    <Text mb='0'>by Invoicy</Text>
-                  </Flex>
-                )}
-                <Box h='2rem' bgColor={colorScheme} />
-              </Box>
-            </Box>
-          </PDFExport>
-        </Box>
-        <Box w='full'>
-          <Box h='2rem' bgColor={colorScheme} /> {/* Invoice Top  */}
-          <Flex
-            p='2rem'
-            justify='space-between'
-            bgColor='gray.200'
-            flexDir={['column', 'row']}
-          >
-            <Box>
-              <Box h='4rem'>
-                {companyLogo !== undefined ? (
-                  <Image src={companyLogo?.cdnUrl} h='full' w='auto' />
-                ) : (
-                  <Heading mb='3rem' color={colorScheme} noOfLines={1}>
-                    {companyName || 'LOGO'}
-                  </Heading>
-                )}
-              </Box>
-              <Box mt='1rem' px='0rem' w='full'>
-                <Text fontWeight='600' w='100%' borderBottom='2px solid black'>
-                  Bill to:
-                </Text>
-                <Text>{customerName}</Text>
-                <Text>{customerEmail}</Text>
-                <Text>{customerAddress}</Text>
-                <Text>{customerPhone}</Text>
-              </Box>
-              {/* <Box>
-              <Text>Company Name</Text>
-              <Text>Company Address</Text>
-              <Text>Company Email</Text>
-              <Text>Company Phone No.</Text>
-            </Box> */}
-            </Box>
-            <Box mt={['1rem', '0']}>
-              <Heading mb='3rem' display={['none', 'block']}>
-                Invoice
-              </Heading>
-              <Text>Date: {date}</Text>
-              <Text textTransform='capitalize'>Invoice No: {invoiceNo}</Text>
-            </Box>
-          </Flex>
-          <TableContainer>
-            <Table variant='striped'>
-              <Thead>
-                <Tr bgColor={colorScheme}>
-                  <TH label='Description' first textScheme={textScheme} />
-                  <TH label='Qty' textScheme={textScheme} />
-                  <TH label='Unit Price' textScheme={textScheme} />
-                  <TH label='Total' textScheme={textScheme} />
-                </Tr>
-              </Thead>
-              <Tbody borderX='1px solid' borderColor='gray.400'>
-                {populatedItem?.map((x) => (
-                  <Tr>
-                    <TD label={x.desc} first />
-                    <TD label={x.unit} />
-                    <TD label={CUR(x.price)} />
-                    <TD label={CUR(x.amount)} />
-                  </Tr>
-                ))}
-              </Tbody>
-            </Table>
-          </TableContainer>
-          <Flex
-            mt='1rem'
-            justify='space-between'
-            px='1rem'
-            flexDirection={['column-reverse', 'row']}
-          >
-            <Box w={['95%', '40%']} mt={['2rem', '0']} mx={['auto', 'unset']}>
-              <Text
-                fontSize='.9rem'
-                fontWeight='600'
-                textAlign={['center', 'left']}
-              >
-                Additional Information
-              </Text>
-              <Text fontSize='.8rem' textAlign={['center', 'left']}>
-                {additionalInfo}
-              </Text>
-            </Box>
-            <Box w={['full', 'auto']}>
-              <VStack>
-                <InvoiceTotal title='Subtotal' value={total || 0} />
-                <InvoiceTotal title='Discount' value={`-${discount || 0} `} />
-                <InvoiceTotal title='Tax' value={taxAmount || 0} />
-              </VStack>
-              <FinalTotal
-                title='Total'
-                value={finalTotal}
-                colorScheme={colorScheme}
-                textScheme={textScheme}
-                currency={currency}
-              />
-            </Box>
-          </Flex>
-          <Flex justify='flex-start' mt='3rem' pl='1rem'>
-            <Box w={['full', '30%']}>
-              <Box h='auto'>
-                {/* <Image src='' h='full' w='auto' /> */}
-                <Text
-                  fontFamily='"Parisienne", cursive;'
-                  mb='0'
-                  fontSize='1.5rem'
-                  textAlign='center'
-                  borderBottom='2px solid black'
-                >
-                  {companySignature}
-                </Text>
-              </Box>
-              <Text
-                fontSize='.9rem'
-                fontWeight='600'
-                mx='auto'
-                w='fit-content'
-                mt='.5rem'
-              >
-                Signature
-              </Text>
-            </Box>
-          </Flex>
-          <Box w='full'>
-            <Text textAlign='center' m='4rem 0 1rem' fontSize='.8rem'>
-              Thank You For Your Patronage
-            </Text>
-            <Flex
-              justify='center'
-              gap='2rem'
-              mb='1rem'
-              fontSize='.9rem'
-              flexWrap='wrap'
-            >
-              {companyPhone && (
-                <HStack>
-                  <Icon as={CgPhone} />
-                  <Text mb='0'>{companyPhone}</Text>
-                </HStack>
-              )}
-              {companyWebsite && (
-                <HStack>
-                  <Icon as={AiFillChrome} />
-                  <Text mb='0'>{companyWebsite}</Text>
-                </HStack>
-              )}
-              {companyAddress && (
-                <HStack>
-                  <Icon as={ImLocation2} />
-                  <Text mb='0'>{companyAddress}</Text>
-                </HStack>
-              )}
-            </Flex>
-            {watermark && (
-              <Flex justify='center' color='gray.400' align='center' mb='1rem'>
-                <Text mb='0'>Made with</Text>
-                <Icon as={GiLoveMystery} mx='.5rem' />
-                <Text mb='0'>by Invoicy</Text>
-              </Flex>
-            )}
-            <Box h='2rem' bgColor={colorScheme} />
-          </Box>
-        </Box>
-        <HStack
-          justify='center'
-          mt='2rem'
-          gap='1rem'
-          spacing={'0'}
-          mb='4rem'
-          w='full'
-          flexDir={['column', 'row']}
-        >
-          <Button
-            bgColor='gray.500'
-            color='white'
-            px='2rem'
-            h='3rem'
-            w={['full', 'fit-content']}
-            onClick={handlePrint}
-          >
-            Print Invoice
-          </Button>
-          <Button
-            bgColor={colorScheme}
-            color={textScheme}
-            px='2rem'
-            h='3rem'
-            w={['full', 'fit-content']}
-            onClick={downloadInvoice}
-          >
-            Download Invoice
-          </Button>
-        </HStack>
-      </Box>
+      {template == '1' ? (
+        <TemplateOne
+          showInvoice={showInvoice}
+          refA={ref}
+          invoiceNo={invoiceNo}
+          colorScheme={colorScheme}
+          companyLogo={companyLogo}
+          companyName={companyName}
+          customerEmail={customerEmail}
+          customerName={customerName}
+          customerPhone={customerPhone}
+          customerAddress={customerAddress}
+          date={date}
+          textScheme={textScheme}
+          populatedItem={populatedItem}
+          additionalInfo={additionalInfo}
+          total={total}
+          taxAmount={taxAmount}
+          discount={discount}
+          companySignature={companySignature}
+          companyAddress={companyAddress}
+          companyPhone={companyPhone}
+          companyWebsite={companyWebsite}
+          currency={currency}
+          watermark={watermark}
+          finalTotal={finalTotal}
+          handlePrint={handlePrint}
+          downloadInvoice={downloadInvoice}
+        />
+      ) : template == '2' ? (
+        <TemplateTwo
+          showInvoice={showInvoice}
+          refB={refB}
+          invoiceNo={invoiceNo}
+          colorScheme={colorScheme}
+          companyLogo={companyLogo}
+          companyName={companyName}
+          customerEmail={customerEmail}
+          customerName={customerName}
+          customerPhone={customerPhone}
+          customerAddress={customerAddress}
+          date={date}
+          textScheme={textScheme}
+          populatedItem={populatedItem}
+          additionalInfo={additionalInfo}
+          total={total}
+          taxAmount={taxAmount}
+          discount={discount}
+          companySignature={companySignature}
+          companyAddress={companyAddress}
+          companyPhone={companyPhone}
+          companyWebsite={companyWebsite}
+          currency={currency}
+          watermark={watermark}
+          finalTotal={finalTotal}
+          handlePrint={handlePrintB}
+          downloadInvoice={downloadInvoiceB}
+        />
+      ) : null}
     </Box>
   );
 }

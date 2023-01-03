@@ -12,7 +12,10 @@ const Footer = () => {
             templateColumns={['repeat(1,1fr)', 'repeat(2, 1fr)']}
             gap='2rem'
           >
-            <Logo imgUrl='assets/images/invoicy.png' />
+            <Logo
+              imgUrl='assets/images/invoicy.png'
+              justify={['center', 'unset']}
+            />
             <Grid templateColumns={['repeat(2,1fr)', 'repeat(2, 1fr)']}>
               <Box textAlign={['left', 'right']} color='white'>
                 <Text fontWeight='bold'>Call Us:</Text>
