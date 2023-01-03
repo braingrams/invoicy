@@ -464,12 +464,13 @@ function SingleTemplate({ template }) {
               <TableContainer>
                 <Table>
                   <Thead>
-                    <Tr bgColor={'gray.500'}>
+                    <Tr bgColor={'gray.400'}>
                       <TH label='Description' />
                       <TH label='Qty' />
                       <TH label='Unit Price' />
-                      <TH label='Total' />'
-                      <TH label={`&apos;`} />
+                      <TH label='Total' />
+                      <TH label={''} />
+                      <TH label={''} />
                     </Tr>
                   </Thead>
                   <Tbody borderX='1px solid' borderColor='gray.400'>
