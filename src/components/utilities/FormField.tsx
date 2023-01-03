@@ -19,6 +19,7 @@ interface formInput {
   disabled?: boolean;
   options?: any[];
   readonly?: boolean;
+  type?: string;
 }
 
 export function PrimaryInput({
@@ -28,6 +29,7 @@ export function PrimaryInput({
   value,
   disabled,
   readonly,
+  type = 'text',
 }: formInput) {
   return (
     <Box>
@@ -46,6 +48,7 @@ export function PrimaryInput({
         disabled={disabled}
         w='full'
         readOnly={readonly}
+        type={type}
       />
     </Box>
   );

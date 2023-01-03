@@ -1,6 +1,10 @@
 import { Box, Text } from '@chakra-ui/react';
 import React from 'react';
-import { HexColorPicker } from 'react-colorful';
+import {
+  HexColorInput,
+  HexColorPicker,
+  HexAlphaColorPicker,
+} from 'react-colorful';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 
 function Wheels({ colorScheme, setColorScheme, text, refs }) {
@@ -9,7 +13,14 @@ function Wheels({ colorScheme, setColorScheme, text, refs }) {
       <Text fontSize='.7rem' mb='1' textAlign='center'>
         {text}
       </Text>
-      <HexColorPicker color={colorScheme} onChange={setColorScheme} />
+      <HexAlphaColorPicker color={colorScheme} onChange={setColorScheme} />
+      <HexColorInput
+        color={colorScheme}
+        onChange={setColorScheme}
+        className='colorful'
+        prefixed
+        alpha
+      />
     </Box>
   );
 }

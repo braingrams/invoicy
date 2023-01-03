@@ -282,10 +282,10 @@ function SingleTemplate({ template }) {
           mx='auto'
           justifyContent='center'
           alignItems='center'
-          w='80%'
+          w='55%'
           mb='1rem'
           h='3rem'
-          bgColor='brand.600'
+          bgColor={colorScheme}
           color='white'
           onClick={() => setShowInvoice(!showInvoice)}
         >
@@ -338,6 +338,7 @@ function SingleTemplate({ template }) {
               {/* <PrimaryInput label='Company Email' /> */}
               <PrimaryInput
                 label='Company Phone No.'
+                type='tel'
                 onChange={(e) => setCompanyPhone(e.target.value)}
               />
               <PrimaryInput
@@ -391,10 +392,12 @@ function SingleTemplate({ template }) {
             >
               <PrimaryInput
                 label='Email'
+                type='email'
                 onChange={(e) => setCustomerEmail(e.target.value)}
               />
               <PrimaryInput
                 label='Phone No.'
+                type='tel'
                 onChange={(e) => setCustomerPhone(e.target.value)}
               />
               {/* <PrimaryInput label='Invoice no' /> */}
@@ -425,11 +428,13 @@ function SingleTemplate({ template }) {
             >
               <PrimaryInput
                 label='Quantity'
+                type='number'
                 onChange={(e) => setItems({ ...items, unit: e.target.value })}
                 value={items.unit}
               />
               <PrimaryInput
                 label='Price'
+                type='number'
                 onChange={(e) => setItems({ ...items, price: e.target.value })}
                 value={items.price}
               />
