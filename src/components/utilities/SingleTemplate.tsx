@@ -469,12 +469,12 @@ function SingleTemplate({ template }) {
                       <TH label='Qty' />
                       <TH label='Unit Price' />
                       <TH label='Total' />'
-                      <TH label='' />
+                      <TH label={''} />
                     </Tr>
                   </Thead>
                   <Tbody borderX='1px solid' borderColor='gray.400'>
                     {populatedItem?.map((x) => (
-                      <Tr>
+                      <Tr key={x.id}>
                         <TD label={x.desc} />
                         <TD label={x.unit} />
                         <TD label={x.price} />

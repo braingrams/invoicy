@@ -118,7 +118,7 @@ function TemplateOne({
                 </Thead>
                 <Tbody borderX='1px solid' borderColor='gray.400'>
                   {populatedItem?.map((x) => (
-                    <Tr>
+                    <Tr key={x.id}>
                       <TD label={x.desc} first />
                       <TD label={x.unit} />
                       <TD label={x.price} />
@@ -264,7 +264,7 @@ function TemplateOne({
             </Thead>
             <Tbody borderX='1px solid' borderColor='gray.400'>
               {populatedItem?.map((x) => (
-                <Tr>
+                <Tr key={x.id}>
                   <TD label={x.desc} first />
                   <TD label={x.unit} />
                   <TD label={CUR(x.price)} />

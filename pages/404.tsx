@@ -15,7 +15,7 @@ const NotFoundPage = () => {
     <PageLayout title='404' description='Not Found'>
       <VStack spacing={2} justify='center' h='100vh'>
         <Box w='70%' mx='auto'>
-          <Image src='/assets/images/error.png' w='full' h='auto' />
+          <Image src='/assets/images/error.png' w='full' h='auto' alt='' />
         </Box>
         <Heading color='brand.600'>Error 404</Heading>
         <Heading>Something went wrong!</Heading>
