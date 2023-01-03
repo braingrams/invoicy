@@ -6,7 +6,7 @@ export function TH({
   first,
   textScheme,
 }: {
-  label: string;
+  label?: string;
   first?: boolean;
   textScheme?: string;
 }) {
