@@ -491,6 +491,7 @@ function TemplateTwo({
           h='3rem'
           w={['full', 'fit-content']}
           onClick={handlePrint}
+          display={['none', 'unset']}
         >
           Print Invoice
         </Button>
