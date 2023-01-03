@@ -1,56 +1,56 @@
 [
     {
         "id": 0,
-        "user": "Akinyemi Bukunmi",
-        "role": "Tech Lead.",
+        "user": "Jessi V",
+        "role": "Beam Inc.",
         "title": "It is undeniably good",
-        "word": "Rapidously moving waves like it should cause its taking things as beautiful as it should be",
+        "word": "Thank you for making it painless, pleasant and most of all hassle free! Invoicy is both attractive and highly adaptable. The very best. I wish I would have thought of it first.",
         "rate": 5,
-        "active": true
+        "img": "/assets/images/a.jpeg"
     },
     {
         "id": 1,
-        "user": "Obi Jackson",
-        "role": "Tech Lead.",
-        "title": "It is undeniably good",
-        "word": "Rapidously moving waves like it should cause its taking things as beautiful as it should be",
+        "user": "Riam Beddings & Interiors",
+        "role": "CEO.",
+        "title": "Saves Time and Money",
+        "word": "I just can't imagine a solution that will be easy to use going all for free. God bless invoicy for making it easy",
         "rate": 5,
-        "active": true
+        "img": "/assets/images/b.jpeg"
     },
     {
         "id": 2,
-        "user": "Adeleke John",
-        "role": "MD/CEO.",
-        "title": "This is Great",
-        "word": "Amazing is an underestatement",
+        "user": "Micon Perfumery",
+        "role": "Perfume Specialist.",
+        "title": "Absolutely Amazing",
+        "word": "Thank You! Without Invoicy, we would have gone bankrupt by now cause it hepls keep record and uplift brand style. Invoicy is the next killer app.",
         "rate": 4,
-        "active": false
+        "img": "/assets/images/c.jpeg"
     },
     {
         "id": 3,
-        "user": "Tolu George",
-        "role": "Tech Lead.",
-        "title": "It is undeniably good",
-        "word": "Rapidously moving waves like it should cause its taking things as beautiful as it should be",
+        "user": "Daffie A",
+        "role": "Personal Manager.",
+        "title": "Service of the year",
+        "word": "Invoicy should be nominated for service of the year. Invoicy did exactly what you said it does. Just what I was looking for. It's exactly what I've been looking for.",
         "rate": 3,
-        "active": false
+        "img": "/assets/images/d.jpeg"
     },
     {
         "id": 4,
         "user": "Bimbo Davis",
-        "role": "Tech Lead.",
-        "title": "It is undeniably good",
-        "word": "Rapidously moving waves like it should cause its taking things as beautiful as it should be",
+        "role": "Sales Manager.",
+        "title": "Invoicy is the best",
+        "word": "Invoicy was worth a fortune to my company. I am really satisfied with my Invoicy. You won't regret it.",
         "rate": 5,
-        "active": false
+        "img": "/assets/images/e.jpeg"
     },
     {
         "id": 5,
-        "user": "Tope Aina",
-        "role": "Tech Lead.",
-        "title": "It is undeniably good",
-        "word": "Rapidously moving waves like it should cause its taking things as beautiful as it should be",
+        "user": "Luciano G",
+        "role": "Brand Influencer.",
+        "title": "Surpassed our expectation",
+        "word": "Invoicy has completely surpassed our expectations. Very easy to use. I would gladly pay over 600 dollars for Invoicy. The best on the net!",
         "rate": 4,
-        "active": false
+        "img": "/assets/images/f.jpeg"
     }
 ]

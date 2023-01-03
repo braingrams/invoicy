@@ -1,10 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
 @import url('https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css');
-
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Parisienne&display=swap');
 
 .carouselItem:not(style) ~ *:not(style) {
   margin-inline-start: 3rem;
 }
 .carouselItem {
   margin: 0;
+}
+.formcheck {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid #052163;
+  border-radius: 0%;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  display: grid;
+  place-content: center;
+}
+input[type='checkbox']::before {
+  content: '';
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  background-color: white;
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+input[type='checkbox']:checked::before {
+  transform: scale(1);
+}
+input[type='checkbox']:checked {
+  background: #052163;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  background-color: #dce1e7;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #052163;
+  border-radius: 15px;
+}
+.currency {
+  height: 4rem !important;
+  border-radius: 5px;
+  border: 2px solid !important;
+}
+/* @font-face {
+  font-family: 'Montserrat', sans-serif;
+  src: url('https://fonts.cdnfonts.com/css/montserrat') format('truetype');
+} */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat-Regular'),
+    url(http://fonts.gstatic.com/s/montserrat/v6/zhcz-_WihjSQC0oHJ9TCYC3USBnSvpkopQaUR-2r7iU.ttf)
+      format('truetype');
 }

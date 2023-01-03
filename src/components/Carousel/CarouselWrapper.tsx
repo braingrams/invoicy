@@ -74,10 +74,10 @@ function CarouselWrapper({
         overflow='hidden'
         transition='ease 1s'
       >
-        {slides.map((slide) => (
+        {slides.map((slide, i) => (
           <>
             <TestimonialCards
-              key={slide.id}
+              key={i}
               x={slide}
               width={width}
               currentSlide={currentSlide}
@@ -115,7 +115,7 @@ function CarouselWrapper({
         >
           {slides.map((slide, i) => (
             <Circle
-              key={slide.id}
+              key={i}
               bgColor='white'
               size='.8rem'
               //   outline='2px solid black'

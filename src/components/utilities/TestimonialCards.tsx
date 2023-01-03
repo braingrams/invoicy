@@ -1,5 +1,5 @@
 import { Testimonial } from '@/types/testimonial';
-import { Box, HStack, Square, Text, VStack } from '@chakra-ui/react';
+import { Box, HStack, Image, Square, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { IoMdStar, IoMdStarOutline } from 'react-icons/io';
 import Rating from 'react-rating';
@@ -32,9 +32,9 @@ function TestimonialCards({
       display='inline-block'
       transition='ease 1s'
       style={{
-        transform: `translateX(${
+        transform: `translate3d(${
           -currentSlide * 100 - currentSlide * adjustment
-        }%)`,
+        }%, 0, 0)`,
       }}
       className={'carouselItem'}
       onMouseEnter={() => stopSliderTimer()}
@@ -43,17 +43,23 @@ function TestimonialCards({
     >
       <VStack align='flex-start' color='white' spacing='1rem'>
         <HStack>
-          <Square size='3rem' bgColor='gray.200' />
+          <Square size='3rem' bgColor='gray.200' overflow='hidden'>
+            <Image src={x.img} w='full' h='full' objectFit='cover' />
+          </Square>
           <Box>
-            <Text fontWeight='600'>{x.user}</Text>
-            <Text fontSize='.8rem'>{x.role}</Text>
+            <Text fontWeight='600' mb='0'>
+              {x.user}
+            </Text>
+            <Text fontSize='.8rem' mb='0'>
+              {x.role}
+            </Text>
           </Box>
         </HStack>
         <Box>
-          <Text fontWeight='600' fontSize='.9rem'>
+          <Text fontWeight='600' fontSize='.9rem' mb='0'>
             {x.title}
           </Text>
-          <Text fontSize='.7rem' whiteSpace='pre-wrap'>
+          <Text fontSize='.7rem' whiteSpace='pre-wrap' mb='0'>
             {x.word}
           </Text>
         </Box>

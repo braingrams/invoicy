@@ -6,6 +6,9 @@ const styles = {
     body: {
       bg: mode('#fff', '#2d3142')(props),
     },
+    p: {
+      marginBottom: '1rem',
+    },
   }),
 };
 

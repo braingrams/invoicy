@@ -67,7 +67,7 @@ const PageLayout = ({ title, description, children }: PageProps) => {
       <MotionContainer
         display='flex'
         maxW='100%'
-        minH={{ base: 'auto', md: '100vh' }}
+        minH={{ base: 'auto', md: '65vh' }}
         initial='hidden'
         animate='enter'
         exit='exit'

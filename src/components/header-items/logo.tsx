@@ -1,4 +1,5 @@
 import { Box, Image, Heading } from '@chakra-ui/react';
+import Link from 'next/link';
 
 interface logoProps {
   imgUrl?: string;
@@ -6,13 +7,15 @@ interface logoProps {
 }
 const Logo = ({ imgUrl, text }: logoProps) => {
   return (
-    <Box h='4rem'>
-      {imgUrl ? (
-        <Image src={imgUrl} alt='Invoicy' w='auto' h='full' />
-      ) : (
-        <Heading>{text}</Heading>
-      )}
-    </Box>
+    <Link passHref href='/'>
+      <Box h={['3rem', '4rem']} cursor='pointer'>
+        {imgUrl ? (
+          <Image src={`/${imgUrl}`} alt='Invoicy' w='auto' h='full' />
+        ) : (
+          <Heading>{text}</Heading>
+        )}
+      </Box>
+    </Link>
   );
 };
 

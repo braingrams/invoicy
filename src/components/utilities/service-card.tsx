@@ -1,14 +1,26 @@
-import { Box, Heading, Square, VStack, Text } from '@chakra-ui/react';
+import { Box, Heading, Square, VStack, Text, Icon } from '@chakra-ui/react';
 
 interface ServiceProps {
   color: string;
-  icon: string;
+  icon: any;
   title: string;
+  text: string;
 }
 
-export default function ServiceCard({ color, icon, title }: ServiceProps) {
+export default function ServiceCard({
+  color,
+  icon,
+  title,
+  text,
+}: ServiceProps) {
   return (
-    <VStack gap='3rem'>
+    <VStack
+      gap='3rem'
+      w='full'
+      bgColor='white'
+      boxShadow={['md', 'unset']}
+      px='.5rem'
+    >
       <Square
         bgColor={color}
         size='5rem'
@@ -16,13 +28,12 @@ export default function ServiceCard({ color, icon, title }: ServiceProps) {
         color='white'
         fontSize='2.5rem'
       >
-        <i className={`fa-solid ${icon}`}></i>
+        <Icon as={icon} />
       </Square>
       <Box textAlign='center'>
         <Heading fontSize='1.5rem'>{title}</Heading>
         <Text fontSize='.9rem' mt='.5rem'>
-          Appropriately grow competitive leadership rather than strategic
-          technically sound processes without state.
+          {text}
         </Text>
       </Box>
     </VStack>

@@ -3,7 +3,7 @@ import { Box, HStack } from '@chakra-ui/react';
 export const ContainerStack = ({ children }) => {
   return (
     <HStack
-      w='80%'
+      w={['90%', '80%']}
       mx='auto'
       justify='space-between'
       align='center'
@@ -15,7 +15,7 @@ export const ContainerStack = ({ children }) => {
 };
 export const Container = ({ children }) => {
   return (
-    <Box w='80%' mx='auto' minH='7rem'>
+    <Box w={['90%', '80%']} mx='auto' minH='1rem'>
       {children}
     </Box>
   );

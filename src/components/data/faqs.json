@@ -1,0 +1,22 @@
+[
+    {
+        "id": "1",
+        "question": "What is Invoicy?",
+        "answer": "Invoicy is a website that provides users with tools that generate downloadable invoices for customers based on the data provided for proper financial management"
+    },
+    {
+        "id": "2",
+        "question": "Is Invoicy free forever?",
+        "answer": "As at the time of development, Invoicy is free for all users either big or small, but you can call for a more specific version that suits your business perfectly. Our dev teams will be glad to provide full support"
+    },
+    {
+        "id": "3",
+        "question": "Can I Use Invoicy on My Iphone?",
+        "answer": "Invoicy has been designed to be compatible with any device of your choice either Laptop,Tablet, Android, iPhone, or iPad. All you need is an internet connection"
+    },
+    {
+        "id": "4",
+        "question": "How can I use a Different Template?",
+        "answer": "We have provided few different templates for you to choose from and customize with the ability to choose a color that matches your brand. if this isn't enough, you can get in touch with us while we create a quote for your brand"
+    }
+]

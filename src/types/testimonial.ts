@@ -5,4 +5,5 @@ export interface Testimonial {
   title: string;
   word: string;
   rate: number;
+  img: string;
 }
