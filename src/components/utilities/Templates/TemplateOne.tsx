@@ -210,7 +210,7 @@ function TemplateOne({
               {watermark && (
                 <Flex
                   justify='center'
-                  color={textScheme}
+                  color={colorScheme}
                   align='center'
                   mb='1rem'
                 >
