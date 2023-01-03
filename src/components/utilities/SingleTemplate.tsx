@@ -186,17 +186,7 @@ function SingleTemplate({ template }) {
     };
   }, []);
 
-  //Template One
-  const ref = useRef<any>(null);
-  function downloadInvoice() {
-    if (ref.current) {
-      ref.current.save();
-    }
-  }
-  const handlePrint = useReactToPrint({
-    content: () => ref.current,
-  });
-
+  const refA = useRef<any>(null);
   //Template two
   const refB = useRef<any>(null);
   function downloadInvoiceB() {
@@ -562,7 +552,7 @@ function SingleTemplate({ template }) {
       {template == '1' ? (
         <TemplateOne
           showInvoice={showInvoice}
-          refA={ref}
+          refA={refA}
           invoiceNo={invoiceNo}
           colorScheme={colorScheme}
           companyLogo={companyLogo}
@@ -585,38 +575,38 @@ function SingleTemplate({ template }) {
           currency={currency}
           watermark={watermark}
           finalTotal={finalTotal}
-          handlePrint={handlePrint}
-          downloadInvoice={downloadInvoice}
         />
       ) : template == '2' ? (
-        <TemplateTwo
-          showInvoice={showInvoice}
-          refB={refB}
-          invoiceNo={invoiceNo}
-          colorScheme={colorScheme}
-          companyLogo={companyLogo}
-          companyName={companyName}
-          customerEmail={customerEmail}
-          customerName={customerName}
-          customerPhone={customerPhone}
-          customerAddress={customerAddress}
-          date={date}
-          textScheme={textScheme}
-          populatedItem={populatedItem}
-          additionalInfo={additionalInfo}
-          total={total}
-          taxAmount={taxAmount}
-          discount={discount}
-          companySignature={companySignature}
-          companyAddress={companyAddress}
-          companyPhone={companyPhone}
-          companyWebsite={companyWebsite}
-          currency={currency}
-          watermark={watermark}
-          finalTotal={finalTotal}
-          handlePrint={handlePrintB}
-          downloadInvoice={downloadInvoiceB}
-        />
+        <>
+          <TemplateTwo
+            showInvoice={showInvoice}
+            refB={refB}
+            invoiceNo={invoiceNo}
+            colorScheme={colorScheme}
+            companyLogo={companyLogo}
+            companyName={companyName}
+            customerEmail={customerEmail}
+            customerName={customerName}
+            customerPhone={customerPhone}
+            customerAddress={customerAddress}
+            date={date}
+            textScheme={textScheme}
+            populatedItem={populatedItem}
+            additionalInfo={additionalInfo}
+            total={total}
+            taxAmount={taxAmount}
+            discount={discount}
+            companySignature={companySignature}
+            companyAddress={companyAddress}
+            companyPhone={companyPhone}
+            companyWebsite={companyWebsite}
+            currency={currency}
+            watermark={watermark}
+            finalTotal={finalTotal}
+            handlePrint={handlePrintB}
+            downloadInvoice={downloadInvoiceB}
+          />
+        </>
       ) : null}
     </Box>
   );

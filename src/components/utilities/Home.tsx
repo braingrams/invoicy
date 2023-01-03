@@ -289,7 +289,7 @@ const HomePage = () => {
             FAQ
           </Text>
           <Heading textAlign='center'>Frequently Asked Questions</Heading>
-          <Text w={['full', '30%']} mx='auto !important' textAlign='center'>
+          <Text w={['90%', '30%']} mx='auto !important' textAlign='center'>
             Some of the questions frequently asked by users to get started using
             Invoicy
           </Text>

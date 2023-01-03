@@ -23,6 +23,7 @@ import { AiFillChrome } from 'react-icons/ai';
 import { CgPhone } from 'react-icons/cg';
 import { GiLoveMystery } from 'react-icons/gi';
 import { ImLocation2 } from 'react-icons/im';
+import { useReactToPrint } from 'react-to-print';
 
 function TemplateOne({
   showInvoice,
@@ -49,9 +50,16 @@ function TemplateOne({
   currency,
   watermark,
   finalTotal,
-  handlePrint,
-  downloadInvoice,
 }) {
+  function downloadInvoice() {
+    if (refA.current) {
+      refA.current.save();
+    }
+  }
+  const handlePrint = useReactToPrint({
+    content: () => refA.current,
+    documentTitle: `INVOICY ${invoiceNo}.pdf`,
+  });
   return (
     <Box
       w={['90%', '49%']}
@@ -73,19 +81,19 @@ function TemplateOne({
           fileName={`INVOICY - ${invoiceNo}.pdf`}
           author='KendoReact Team'
         >
-          <Box w='full' h='29.7cm' pos='relative'>
+          <Box w='full' h='29.65cm' pos='relative' ref={refA}>
             <Box h='2rem' bgColor={colorScheme} /> {/* Invoice Top  */}
             <Flex p='2rem' justify='space-between' bgColor='gray.200'>
               <Box>
-                <Box h='4rem'>
-                  {companyLogo !== undefined ? (
+                {companyLogo !== undefined ? (
+                  <Box h='4rem'>
                     <Image src={companyLogo?.cdnUrl} h='full' w='auto' />
-                  ) : (
-                    <Heading mb='3rem' color={colorScheme} noOfLines={1}>
-                      {companyName || 'LOGO'}
-                    </Heading>
-                  )}
-                </Box>
+                  </Box>
+                ) : (
+                  <Heading mb='3rem' color={colorScheme} noOfLines={1}>
+                    {companyName || 'LOGO'}
+                  </Heading>
+                )}
                 <Box mt='1rem' px='0rem' w='full'>
                   <Text
                     fontWeight='600'
@@ -225,15 +233,15 @@ function TemplateOne({
           flexDir={['column', 'row']}
         >
           <Box>
-            <Box h='4rem'>
-              {companyLogo !== undefined ? (
+            {companyLogo !== undefined ? (
+              <Box h='4rem'>
                 <Image src={companyLogo?.cdnUrl} h='full' w='auto' />
-              ) : (
-                <Heading mb='3rem' color={colorScheme} noOfLines={1}>
-                  {companyName || 'LOGO'}
-                </Heading>
-              )}
-            </Box>
+              </Box>
+            ) : (
+              <Heading mb='3rem' color={colorScheme} noOfLines={1}>
+                {companyName || 'LOGO'}
+              </Heading>
+            )}
             <Box mt='1rem' px='0rem' w='full'>
               <Text fontWeight='600' w='100%' borderBottom='2px solid black'>
                 Bill to:

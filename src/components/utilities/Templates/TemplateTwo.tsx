@@ -74,7 +74,7 @@ function TemplateTwo({
           fileName={`INVOICY - ${invoiceNo}.pdf`}
           author='KendoReact Team'
         >
-          <Box w='full' h='29.7cm' pos='relative'>
+          <Box w='full' h='29.65cm' pos='relative'>
             {/* <Box h='2rem' bgColor={colorScheme} /> Invoice Top  */}
             <Box w='full' p='1rem'>
               <Flex

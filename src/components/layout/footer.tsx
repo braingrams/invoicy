@@ -2,8 +2,10 @@ import { Box, Circle, Flex, Grid, HStack, Text } from '@chakra-ui/react';
 import { Container } from '../page-layout/container';
 import Logo from '../header-items/logo';
 import { RiInstagramFill, RiLinkedinFill, RiTwitterFill } from 'react-icons/ri';
+import moment from 'moment';
 
 const Footer = () => {
+  const date = moment(new Date()).format('YYYY');
   return (
     <>
       <Box bgColor='brand.100' p='3rem 0'>
@@ -24,8 +26,8 @@ const Footer = () => {
               </Box>
               <Box textAlign='right' color='white'>
                 <Text fontWeight='bold'>Send us an Email:</Text>
-                <Text>admin@invoicy.com</Text>
-                <Text>help@invoicy.com</Text>
+                <Text>admin@quickinvoice.com.ng</Text>
+                <Text>help@quickinvoice.com.ng</Text>
               </Box>
             </Grid>
           </Grid>
@@ -38,7 +40,9 @@ const Footer = () => {
             align='center'
             flexDirection={['column', 'row']}
           >
-            <Text color='gray.500'>&copy; 2022 Invoicy Rights Reserved. </Text>
+            <Text color='gray.500'>
+              &copy; {date} Invoicy Rights Reserved.{' '}
+            </Text>
             <HStack spacing={[2, 3]}>
               <Circle
                 as='a'
