@@ -234,7 +234,7 @@ function TemplateOne({
           flexDir={['column', 'row']}
         >
           <Box>
-            {companyLogo === undefined ? (
+            {companyLogo !== undefined ? (
               <Box h={`${height}rem`}>
                 <Image src={companyLogo?.cdnUrl} h='full' w='auto' />
               </Box>
