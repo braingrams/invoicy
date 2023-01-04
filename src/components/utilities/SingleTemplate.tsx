@@ -16,6 +16,10 @@ import {
   Circle,
   Button,
   useToast,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
 } from '@chakra-ui/react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
@@ -30,7 +34,7 @@ import { TD, TH } from './Tables';
 import InvoiceTotal, { FinalTotal } from './InvoiceTotal';
 import { CgPhone } from 'react-icons/cg';
 import { ImLocation2, ImTextColor } from 'react-icons/im';
-import { MdOutlineColorLens } from 'react-icons/md';
+import { FiImage } from 'react-icons/fi';
 import {
   AiFillChrome,
   AiFillDelete,
@@ -101,6 +105,7 @@ function SingleTemplate({ template }) {
   const [populatedItem, setPopulatedItem] = useState<any[]>([]);
   const [total, setTotal] = useState();
   const amount = Math.round(items.price * items.unit);
+  const [height, setHeight] = useState(4);
 
   //   console.log({ companyLogo });
 
@@ -350,13 +355,33 @@ function SingleTemplate({ template }) {
               templateColumns={['repeat(1,1fr)', 'repeat(2, 1fr)']}
               gap='2rem'
             >
-              <UploadCareWidget
-                refs={widgetApi}
-                loading={loading}
-                uploadFunction={uploadLogo}
-                filename={companyLogo?.name}
-                label='Company Logo'
-              />
+              <Box>
+                <UploadCareWidget
+                  refs={widgetApi}
+                  loading={loading}
+                  uploadFunction={uploadLogo}
+                  filename={companyLogo?.name}
+                  label='Company Logo'
+                />
+                <Text fontSize='.7rem' my='.5rem'>
+                  Adjust Logo Size
+                </Text>
+                <Slider
+                  flex='1'
+                  focusThumbOnChange={false}
+                  value={height}
+                  onChange={(value) => setHeight(value)}
+                >
+                  <SliderTrack>
+                    <SliderFilledTrack bg={colorScheme} />
+                  </SliderTrack>
+                  <SliderThumb
+                    fontSize='sm'
+                    boxSize='32px'
+                    children={<Box color={colorScheme} as={FiImage} />}
+                  />
+                </Slider>
+              </Box>
               <PrimaryInput
                 label='Company Signature'
                 onChange={(e) => setCompanySignature(e.target.value)}
@@ -580,6 +605,7 @@ function SingleTemplate({ template }) {
           currency={currency}
           watermark={watermark}
           finalTotal={finalTotal}
+          height={height}
         />
       ) : template == '2' ? (
         <>
@@ -610,6 +636,7 @@ function SingleTemplate({ template }) {
             finalTotal={finalTotal}
             handlePrint={handlePrintB}
             downloadInvoice={downloadInvoiceB}
+            height={height}
           />
         </>
       ) : null}

@@ -52,6 +52,7 @@ function TemplateTwo({
   finalTotal,
   handlePrint,
   downloadInvoice,
+  height,
 }) {
   return (
     <Box
@@ -107,7 +108,7 @@ function TemplateTwo({
                 <Box>
                   <Box h='fit-content'>
                     {companyLogo !== undefined ? (
-                      <Flex h='4rem'>
+                      <Flex h={`${height}rem`}>
                         <Image src={companyLogo?.cdnUrl} h='full' w='auto' />
                       </Flex>
                     ) : (
@@ -314,7 +315,7 @@ function TemplateTwo({
           <Box>
             <Box h='fit-content'>
               {companyLogo !== undefined ? (
-                <Flex justify={['center', 'unset']} h='4rem'>
+                <Flex justify={['center', 'unset']} h={`${height}rem`}>
                   <Image src={companyLogo?.cdnUrl} h='full' w='auto' />
                 </Flex>
               ) : (

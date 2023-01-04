@@ -50,6 +50,7 @@ function TemplateOne({
   currency,
   watermark,
   finalTotal,
+  height,
 }) {
   function downloadInvoice() {
     if (refA.current) {
@@ -86,7 +87,7 @@ function TemplateOne({
             <Flex p='2rem' justify='space-between' bgColor='gray.200'>
               <Box>
                 {companyLogo !== undefined ? (
-                  <Box h='4rem'>
+                  <Box h={`${height}rem`}>
                     <Image src={companyLogo?.cdnUrl} h='full' w='auto' />
                   </Box>
                 ) : (
@@ -233,8 +234,8 @@ function TemplateOne({
           flexDir={['column', 'row']}
         >
           <Box>
-            {companyLogo !== undefined ? (
-              <Box h='4rem'>
+            {companyLogo === undefined ? (
+              <Box h={`${height}rem`}>
                 <Image src={companyLogo?.cdnUrl} h='full' w='auto' />
               </Box>
             ) : (
