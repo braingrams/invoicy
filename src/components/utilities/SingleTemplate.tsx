@@ -375,11 +375,9 @@ function SingleTemplate({ template }) {
                   <SliderTrack>
                     <SliderFilledTrack bg={colorScheme} />
                   </SliderTrack>
-                  <SliderThumb
-                    fontSize='sm'
-                    boxSize='32px'
-                    children={<Box color={colorScheme} as={FiImage} />}
-                  />
+                  <SliderThumb fontSize='sm' boxSize='32px'>
+                    <Box color={colorScheme} as={FiImage} />
+                  </SliderThumb>
                 </Slider>
               </Box>
               <PrimaryInput
