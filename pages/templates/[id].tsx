@@ -1,6 +1,6 @@
 import PageLayout from '@/components/page-layout';
 import SingleTemplate from '@/components/utilities/SingleTemplate';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticProps } from 'next';
 import React from 'react';
 
 function singleTemplate({ id }) {

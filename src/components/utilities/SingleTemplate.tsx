@@ -3,8 +3,6 @@ import {
   Flex,
   Grid,
   Text,
-  Image,
-  Heading,
   Table,
   Tr,
   TableContainer,
@@ -46,12 +44,11 @@ import { GiLoveMystery, GiRoyalLove } from 'react-icons/gi';
 import uuid from 'react-uuid';
 import moment from 'moment';
 import UploadCareWidget from './UploadCareWidget';
-import { PDFExport } from '@progress/kendo-react-pdf';
 import { useReactToPrint } from 'react-to-print';
 import Wheels from './Wheels';
-import useComponentVisible from './useComponentVisible';
 import useClickOutside from './useClickOutside';
 import { CUR } from './Currency';
+import { isSafari } from 'react-device-detect';
 import TemplateOne from './Templates/TemplateOne';
 import TemplateTwo from './Templates/TemplateTwo';
 
@@ -59,6 +56,7 @@ function SingleTemplate({ template }) {
   const [colorScheme, setColorScheme] = useState(
     template == 1 ? 'brand.100' : '#e5127a'
   );
+
   const [textScheme, setTextScheme] = useState('white');
   const [showColorWheel, setShowColorWheel] = useState(false);
   const [showTextWheel, setShowTextWheel] = useState(false);
@@ -604,6 +602,7 @@ function SingleTemplate({ template }) {
           watermark={watermark}
           finalTotal={finalTotal}
           height={height}
+          isSafari={isSafari}
         />
       ) : template == '2' ? (
         <>
@@ -635,6 +634,7 @@ function SingleTemplate({ template }) {
             handlePrint={handlePrintB}
             downloadInvoice={downloadInvoiceB}
             height={height}
+            isSafari={isSafari}
           />
         </>
       ) : null}

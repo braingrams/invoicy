@@ -53,6 +53,7 @@ function TemplateTwo({
   handlePrint,
   downloadInvoice,
   height,
+  isSafari,
 }) {
   return (
     <Box

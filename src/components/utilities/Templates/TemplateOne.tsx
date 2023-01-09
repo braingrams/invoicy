@@ -13,6 +13,7 @@ import {
   Tr,
   VStack,
   Image,
+  useDisclosure,
 } from '@chakra-ui/react';
 import React from 'react';
 import InvoiceTotal, { FinalTotal } from '../InvoiceTotal';
@@ -24,6 +25,8 @@ import { CgPhone } from 'react-icons/cg';
 import { GiLoveMystery } from 'react-icons/gi';
 import { ImLocation2 } from 'react-icons/im';
 import { useReactToPrint } from 'react-to-print';
+import JsPDF from 'jspdf';
+import SafariModal from '../SafariModal';
 
 function TemplateOne({
   showInvoice,
@@ -51,6 +54,7 @@ function TemplateOne({
   watermark,
   finalTotal,
   height,
+  isSafari,
 }) {
   function downloadInvoice() {
     if (refA.current) {
@@ -61,6 +65,15 @@ function TemplateOne({
     content: () => refA.current,
     documentTitle: `INVOICY ${invoiceNo}.pdf`,
   });
+
+  // const generatePDF = () => {
+  //   const report = new JsPDF('portrait', 'pt', 'a4');
+  //   report.html(document.querySelector('#report')).then(() => {
+  //     report.save(`INVOICY ${invoiceNo}.pdf`);
+  //   });
+  // };
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  console.log({ isSafari });
   return (
     <Box
       w={['90%', '49%']}
@@ -82,7 +95,7 @@ function TemplateOne({
           fileName={`INVOICY - ${invoiceNo}.pdf`}
           author='KendoReact Team'
         >
-          <Box w='full' h='29.65cm' pos='relative' ref={refA}>
+          <Box w='full' h='29.6cm' pos='relative' ref={refA} id='report'>
             <Box h='2rem' bgColor={colorScheme} /> {/* Invoice Top  */}
             <Flex p='2rem' justify='space-between' bgColor='gray.200'>
               <Box>
@@ -407,11 +420,12 @@ function TemplateOne({
           px='2rem'
           h='3rem'
           w={['full', 'fit-content']}
-          onClick={downloadInvoice}
+          onClick={!isSafari ? onOpen : downloadInvoice}
         >
           Download Invoice
         </Button>
       </HStack>
+      <SafariModal isOpen={isOpen} onClose={onClose} />
     </Box>
   );
 }
