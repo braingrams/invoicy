@@ -420,7 +420,7 @@ function TemplateOne({
           px='2rem'
           h='3rem'
           w={['full', 'fit-content']}
-          onClick={!isSafari ? onOpen : downloadInvoice}
+          onClick={isSafari ? onOpen : downloadInvoice}
         >
           Download Invoice
         </Button>
